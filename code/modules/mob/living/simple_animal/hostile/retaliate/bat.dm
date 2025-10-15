@@ -61,6 +61,9 @@
 		if(src.pulledby == null)
 			src.zMove(UP, TRUE)
 			to_chat(src, span_notice("I fly up."))
+			var/turf/T = get_turf(src)
+			if(T && isopenturf(T))
+				src.icon_state = "crow_flying"
 		else
 			to_chat(src, span_notice("I can't fly away while being grabbed!"))
 
@@ -76,6 +79,9 @@
 		if(src.pulledby == null)
 			src.zMove(DOWN, TRUE)
 			to_chat(src, span_notice("I fly down."))
+			var/turf/T = get_turf(src)
+			if(T && !isopenturf(T))
+				src.icon_state = "crow"
 		else
 			to_chat(src, span_notice("I can't fly away while being grabbed!"))
 
@@ -83,8 +89,8 @@
 	name = "zad"
 	desc = ""
 	icon = 'icons/roguetown/mob/monster/crow.dmi'
-	icon_state = "crow_flying"
-	icon_living = "crow_flying"
+	icon_state = "crow"
+	icon_living = "crow"
 	icon_dead = "crow1"
 	icon_gib = "crow1"
 	speak_emote = list("caws")
